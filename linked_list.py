@@ -6,6 +6,11 @@ class linked_list:
         self.head = head
     def get_head(self):
         return self.head
+    def travel(self):
+        current = self.head
+        while current != None:
+            print("the data is ",self.data)
+            current = self.next_node
 
 class node:
     def __init__(self,data,next_node = None):
