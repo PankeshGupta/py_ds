@@ -9,8 +9,8 @@ class linked_list:
     def travel(self):
         current = self.head
         while current != None:
-            print("the data is ",self.data)
-            current = self.next_node
+            print("the data is ",current.data)
+            current = current.next_node
 
 class node:
     def __init__(self,data,next_node = None):
