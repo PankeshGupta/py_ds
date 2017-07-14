@@ -16,6 +16,13 @@ class linked_list:
         while current != None:
             print("the data is ",current.data)
             current = current.next_node
+    def length(self):
+        current = self.get_head()
+        length = 0
+        while current.get_next_node() != None:
+            length+=1
+            current = current.get_next_node()
+        return length
             
     def insetion_node_begin(self,data):
         a_node = node(data)
@@ -28,6 +35,27 @@ class linked_list:
         last_node = self.get_end()
         last_node.next_node = a_node
         print("inseted a new node at the end")
+    def return_node(self,pos):
+        current = self.get_head()
+        node_demand = None
+        current_pos = 0
+        while pos >=0 and pos <= self.length() and current_pos != pos:
+            node_demand = current.get_next_node()
+            current_pos +=1
+        return node_demand 
+    def insertion_node_pos(self,pos,data):
+        postion = None
+        if pos==0 :
+            self.insertion_node_begin(data)
+        elif pos == self.length():
+            self.insertion_node_end(data)
+        else :
+            if pos>0 and pos<self.length():
+                a_node = node(data)
+                m_node = self.return_node(pos)
+                a_node.set_next_node(m_node.get_next_node())
+                m_node.set_next_node(a_node)
+                
 class node:
     def __init__(self,data,next_node = None):
         self.data = data
@@ -39,7 +67,7 @@ class node:
     def get_data(self):
         return self.data
     def get_next_node(self):
-        return self.next
+        return self.next_node
     def set_next_node(self,next_node):
         self.next_node = next_node
         
