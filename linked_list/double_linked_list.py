@@ -67,6 +67,14 @@ class double_link_list():
         while current_node != None :
             print("The node is ",current_node.get_data())
             current_node = current_node.get_next_node()
+    def travel_r(self):
+        i = self.length
+        last_node = self.get_node(i)
+        while i>=1:
+            print("--R---: The data is :", last_node.get_data())
+            i = i-1
+            last_node = last_node.get_previous_node()
+            
 
 
 #================= class node starts ========================        
