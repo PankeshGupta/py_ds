@@ -3,6 +3,7 @@ class double_link_list():
         node_initialized = Node(data)
         self.head = node_initialized
         self.length = 1
+        self.bin = []
         print("double link list initialized ")
     #=== get a node at a specific position =========
     def get_node(self,pos):
@@ -60,7 +61,42 @@ class double_link_list():
             print("node added succesfully")
         else:
             print("invalid position please enter correct position no.")
+    #==== deleting nodes ==============
+    def delete_last_node(self):
+        last_node = self.get_node(self.length)
+        last_node.get_previous_node().set_next_node(None)
+        self.bin.append(last_node)
+        del last_node
+        self.length -=1
+        print("The node has been sucesfully deleted")
+        print("=====================================")
+        print(" to get back deleted elements use retrieve elements")
+    def delete_first_node(self):
+        first_node = self.get_head()
+        first_node.get_next_node().set_previous_node(None)
+        self.set_head(first_node.get_next_node())
+        self.length -= 1
+        self.bin.append(first_node)
+        print("The node has been sucesfully deleted")
+        print("=====================================")
+        print(" to get back deleted elements use retrieve elements")
+    def delete_node(self,pos):
+        if pos==1:
+            self.delete_first_node
+        elif pos==self.length:
+            self.delete_last_node
+        elif pos in range(2,self.length):
+            a_node = self.get_node(pos)
+            a_node.get_previous_node().set_next_node(a_node.get_next_node())
+            a_node.get_next_node().set_next_node(a_node.get_previous_node())
+            self.length -=1
+            print("The node has been sucesfully deleted")
+            print("=====================================")
+            print(" to get back deleted elements use retrieve elements")
+            
         
+
+            
     #==== travelling nodes ==============
     def travel_f(self):
         current_node = self.get_head()
