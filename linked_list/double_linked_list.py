@@ -110,7 +110,14 @@ class double_link_list():
             print("--R---: The data is :", last_node.get_data())
             i = i-1
             last_node = last_node.get_previous_node()
-            
+
+    #===== retreving deleted elements =========
+    def get_back(self):
+        last_deleted = self.bin.pop()
+        print(last_deleted)
+        self.add_node_last(last_deleted.get_data())
+        self.length+=1
+        print("elemnet added back")
 
 
 #================= class node starts ========================        
